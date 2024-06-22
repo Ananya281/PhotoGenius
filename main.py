@@ -1,7 +1,7 @@
 # pip3 install flask opencv-python
 from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
-import cv2
+import cv2 #for importing and using opencv
 import os
 
 UPLOAD_FOLDER = 'uploads'
