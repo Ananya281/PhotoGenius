@@ -48,8 +48,9 @@
         </div>
       </div>
     </nav>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %} 
+    {% for category, message in messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       {{ message | safe}}
       <button
@@ -95,6 +96,7 @@
               <option value="cmblur">Apply Median Blur</option>
               <option value="cbfilter">Apply Bilateral Filter</option>
               <option value="cborder">Apply Border</option>
+              <option value="csketch">Convert to Sketch</option>
             </select>
             <label for="floatingSelect">Select an Editing Operation</label>
           </div>
