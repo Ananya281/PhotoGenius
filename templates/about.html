@@ -1,80 +1,132 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About the application</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/"
-            ><b>Photo<span class="text-primary">Genius</span></b></a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="https://github.com/GouravDutta-01/Edit-Ninja"
-                  target="_blank"
-                  >View Github</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <h1 class="text-center my-3">About Photo<span class="text-primary">Genius</span></h1>
-    <h4 class="text-center my-2">
-        Edit your images effortlessly with <span class="text-primary">PhotoGenius</span>. This free online web-app is built using Python Flask and OpenCV.<br>
-        Enjoy easy access to the following image editing features powered by OpenCV:
-    </h4>
-    
-    <ul class="text-center fs-5">
-        <li class="list-group-item">Convert to JPG</li>
-        <li class="list-group-item">Convert to PNG</li>
-        <li class="list-group-item">Convert to Grayscale</li>
-        <li class="list-group-item">Crop image</li>
-        <li class="list-group-item">Resize image to 350*350 px</li>
-        <li class="list-group-item">Resize image to 1000*1000 px</li>
-        <li class="list-group-item">Rotate image vertically</li>
-        <li class="list-group-item">Rotate image horizontally</li>
-        <li class="list-group-item">Apply Gaussian Blur</li>
-        <li class="list-group-item">Apply Median Blur</li>
-        <li class="list-group-item">Apply Bilateral Filter</li>
-        <li class="list-group-item">Apply Border</li>
-      </ul>
-      <div class="mx-5 my-5">
-        <a class="btn btn-primary btn-lg" href="/" role="button">Go Back</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About the application</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+    /* Default dark theme styles */
+    .navbar {
+      background-color: #343a40; /* Dark background color */
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+      color: white; /* White text color */
+    }
+
+    /* Light theme specific styles */
+    body[data-bs-theme="light"] .navbar {
+      background-color: #343a40 !important; /* Darker background color */
+    }
+
+    body[data-bs-theme="light"] #photo {
+      color: white;
+    }
+
+    body[data-bs-theme="light"] .nav-link {
+      color: white;
+    }
+
+    /* Navbar toggle button and theme toggle button styles */
+    .navbar-toggler {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 10px; /* Adjusted position to not overlap with navbar-toggler */
+    }
+
+    @media (max-width: 991.98px) {
+      .theme-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-left: auto;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+    }
+
+    /* Blue toggle button for light theme */
+    body[data-bs-theme="light"] .form-check-input {
+      background-color: #0d6efd; /* Bootstrap primary color */
+      border-color: #0d6efd; /* Bootstrap primary color */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <b><span id="photo">Photo</span><span class="text-primary">Genius</span></b>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Ananya281/PhotoGenius" target="_blank">View Github</a>
+          </li>
+        </ul>
       </div>
-      <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    </div>
+  </nav>
+
+  <!-- Theme toggle button -->
+  <div class="form-check form-switch mx-2 theme-toggle">
+    <input class="form-check-input p-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" onclick="toggleTheme()" />
+  </div>
+
+  <h1 class="fs-1 text-center my-2">About Photo<span class="text-primary">Genius</span></h1>
+  <h3 class="fs-5 text-center fw-normal mb-4">
+    Edit your images effortlessly with <span class="text-primary">PhotoGenius</span>. This free online web-app is built using Python Flask and OpenCV.<br>
+    Enjoy easy access to the following image editing features powered by OpenCV:
+  </h3>
+  <ul class="text-center list-group list-group-flush">
+    <li class="list-group-item">Convert to JPG</li>
+    <li class="list-group-item">Convert to PNG</li>
+    <li class="list-group-item">Convert to Grayscale</li>
+    <li class="list-group-item">Crop image</li>
+    <li class="list-group-item">Resize image to 350*350 px</li>
+    <li class="list-group-item">Resize image to 1000*1000 px</li>
+    <li class="list-group-item">Rotate image vertically</li>
+    <li class="list-group-item">Rotate image horizontally</li>
+    <li class="list-group-item">Apply Gaussian Blur</li>
+    <li class="list-group-item">Apply Median Blur</li>
+    <li class="list-group-item">Apply Bilateral Filter</li>
+    <li class="list-group-item">Apply Border</li>
+  </ul>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.body.dataset.bsTheme = savedTheme;
+        const themeToggleButton = document.getElementById('flexSwitchCheckChecked');
+        themeToggleButton.checked = savedTheme === 'dark';
+      }
+    });
+
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.dataset.bsTheme;
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      body.dataset.bsTheme = newTheme;
+      localStorage.setItem('theme', newTheme);
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
 </html>
