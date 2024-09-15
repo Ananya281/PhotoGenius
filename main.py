@@ -1,5 +1,5 @@
 # pip3 install flask opencv-python
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from werkzeug.utils import secure_filename
 import cv2 #for importing and using opencv
 import os
@@ -108,27 +108,53 @@ def about():
     return render_template("about.html")
 
 @app.route("/edit", methods=["GET", "POST"])
+# def edit():
+#     if request.method == "POST": 
+#         operation = request.form.get("operation")
+#         # check if the post request has the file part
+#         if 'file' not in request.files:
+#             flash('No file part')
+#             return "error"
+#         file = request.files['file']
+#         # If the user does not select a file, the browser submits an
+#         # empty file without a filename.
+#         if file.filename == '':
+#             flash('No selected file')
+#             return "error no selected file"
+#         if file and allowed_file(file.filename):
+#             filename = secure_filename(file.filename)
+#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#             new = processImage(filename, operation)
+#             flash(f"Your image has been processed and is available <a href='/{new}' target='_blank'>here</a>")
+#             return render_template("index.html")
+
+#     return render_template("index.html")
+
+
+
+@app.route("/edit", methods=["GET", "POST"])
 def edit():
-    if request.method == "POST": 
+    if request.method == "POST":
         operation = request.form.get("operation")
-        # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return "error"
+            return redirect(url_for('home'))
         file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
         if file.filename == '':
             flash('No selected file')
-            return "error no selected file"
+            return redirect(url_for('home'))
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            new = processImage(filename, operation)
-            flash(f"Your image has been processed and is available <a href='/{new}' target='_blank'>here</a>")
-            return render_template("index.html")
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            new_file = processImage(filename, operation)
+            if new_file:
+                flash(f"Your image has been processed and is available <a href='/{new_file}' target='_blank'>here</a>")
+            else:
+                flash('Image processing failed')
+            return redirect(url_for('home'))
 
     return render_template("index.html")
 
-
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
